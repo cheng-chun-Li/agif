@@ -69,19 +69,24 @@ var AppComponent = (function () {
     AppComponent.prototype.saveChart = function (newChart) {
         this.chart.push(newChart);
     };
-    AppComponent.prototype.loadData = function () {
+    AppComponent.prototype.loadData = function (ch) {
+        ch.setSize(0, 0, false);
         //define data
         var STATE_NOT_START = "gray.png";
         var STATE_IN_RUNNING = "orange.png";
         var STATE_FINISH = "green.png";
         var listAct = ["act1", "act2", "act3", "act4", "act5"];
         var listTokenState = [[STATE_FINISH, STATE_FINISH, STATE_FINISH, STATE_FINISH, STATE_FINISH],
+            [STATE_FINISH, STATE_FINISH, STATE_FINISH, STATE_FINISH, STATE_FINISH],
+            [STATE_FINISH, STATE_FINISH, STATE_FINISH, STATE_FINISH, STATE_FINISH],
             [STATE_FINISH, STATE_FINISH, STATE_IN_RUNNING, STATE_NOT_START, STATE_NOT_START],
             [STATE_IN_RUNNING, STATE_NOT_START, STATE_NOT_START, STATE_NOT_START, STATE_NOT_START]];
         var listRunTime = [[10, 1, 90, 34, 11],
-            [9, 2, 199, 0, 0],
+            [7, 3, 111, 29, 10],
+            [8, 3, 88, 37, 12],
+            [9, 2, 499, 0, 0],
             [2, 0, 0, 0, 0]];
-        var listTokName = ['tksss', 'runrun', 'pudding'];
+        var listTokName = ['445567s', '33234rt', '111123dsd', '667845db', '000223pd'];
         //create table
         var indexCol = 0;
         while (indexCol < listRunTime[0].length) {
@@ -164,8 +169,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            styles: ["\n      chart {\n        display: block;\n        width:450;\n        height: 200;\n      }\n      table, th, tr, td {\n   \t\tborder: 1px solid black;\n\t  }\n    "],
-            template: "\n    \t<button (click)=\"loadData()\">Click to add random points</button>\n    \t<table width=\"auto\">\n\t        <tr>\n\t\t        <td><chart [options]=\"option1\" (load)=\"saveChart($event.context)\"></chart> </td>\n\t\t        <td><chart [options]=\"option2\" (load)=\"saveChart($event.context)\"></chart> </td>\n\t\t        <td><chart [options]=\"option3\" (load)=\"saveChart($event.context)\"></chart> </td>\n\t\t        <td><chart [options]=\"option4\" (load)=\"saveChart($event.context)\"></chart> </td>\n\t\t        <td><chart [options]=\"option5\" (load)=\"saveChart($event.context)\"></chart> </td>\n\t        </tr>\n        </table>\n    "
+            styles: ["\n      chart {\n        display: block;\n        width:550;\n        height: 200;\n      }\n    "],
+            template: "\n    \t<table width=\"auto\">\n\t        <tr>\n\t\t        <td><chart [options]=\"option1\" (load)=\"saveChart($event.context)\"></chart> </td>\n\t\t        <td><chart [options]=\"option2\" (load)=\"saveChart($event.context)\"></chart> </td>\n\t\t        <td><chart [options]=\"option3\" (load)=\"saveChart($event.context)\"></chart> </td>\n\t\t        <td><chart [options]=\"option4\" (load)=\"saveChart($event.context)\"></chart> </td>\n\t\t        <td><chart [options]=\"option5\" (load)=\"saveChart($event.context)\"></chart> </td>\n                <td><chart [options]=\"option1\" (load)=\"loadData($event.context)\"></chart> </td>\n\t        </tr>\n        </table>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

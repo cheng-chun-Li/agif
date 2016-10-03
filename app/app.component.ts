@@ -8,15 +8,11 @@ import { ChartModule }            from 'angular2-highcharts';
     styles: [`
       chart {
         display: block;
-        width:450;
+        width:550;
         height: 200;
       }
-      table, th, tr, td {
-   		border: 1px solid black;
-	  }
     `],
     template: `
-    	<button (click)="loadData()">Click to add random points</button>
     	<table width="auto">
 	        <tr>
 		        <td><chart [options]="option1" (load)="saveChart($event.context)"></chart> </td>
@@ -24,6 +20,7 @@ import { ChartModule }            from 'angular2-highcharts';
 		        <td><chart [options]="option3" (load)="saveChart($event.context)"></chart> </td>
 		        <td><chart [options]="option4" (load)="saveChart($event.context)"></chart> </td>
 		        <td><chart [options]="option5" (load)="saveChart($event.context)"></chart> </td>
+                <td><chart [options]="option1" (load)="loadData($event.context)"></chart> </td>
 	        </tr>
         </table>
     `
@@ -93,7 +90,8 @@ export class AppComponent {
       this.chart.push(newChart);
     }
 
-    loadData() {
+    loadData(ch) {
+        ch.setSize(0,0,false);
     	//define data
     	var STATE_NOT_START = "gray.png";
 		var STATE_IN_RUNNING = "orange.png";
@@ -101,13 +99,17 @@ export class AppComponent {
 
     	var listAct = ["act1", "act2", "act3", "act4", "act5"];
     	var listTokenState = [[STATE_FINISH, STATE_FINISH, STATE_FINISH, STATE_FINISH, STATE_FINISH],
+                              [STATE_FINISH, STATE_FINISH, STATE_FINISH, STATE_FINISH, STATE_FINISH],
+                              [STATE_FINISH, STATE_FINISH, STATE_FINISH, STATE_FINISH, STATE_FINISH],
     						  [STATE_FINISH, STATE_FINISH, STATE_IN_RUNNING, STATE_NOT_START, STATE_NOT_START],
     						  [STATE_IN_RUNNING, STATE_NOT_START, STATE_NOT_START, STATE_NOT_START, STATE_NOT_START]];
     	var listRunTime = [[10, 1, 90, 34, 11],
-    	                   [9, 2, 199, 0, 0],
+                           [7, 3, 111, 29, 10],
+                           [8, 3, 88, 37, 12],
+    	                   [9, 2, 499, 0, 0],
     	                   [2, 0, 0, 0, 0]];
 
-    	var listTokName = ['tksss', 'runrun', 'pudding'];
+    	var listTokName = ['445567s', '33234rt' '111123dsd', '667845db', '000223pd'];
 
     	//create table
     	var indexCol = 0;
